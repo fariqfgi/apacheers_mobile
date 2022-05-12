@@ -22,7 +22,7 @@ class ReportTile extends StatelessWidget {
               leading: Icon(
                 Icons.warning,
                 size: 40,
-                color: Colors.red,
+                color: Color(0xffED6363),
               ),
               title: Text(
                 'IP 180.199.92.92',
