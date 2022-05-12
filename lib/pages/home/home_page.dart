@@ -1,5 +1,5 @@
 import 'package:apacheers_mobile/theme.dart';
-import 'package:apacheers_mobile/widget/report_card.dart';
+import 'package:apacheers_mobile/widget/report_total.dart';
 import 'package:apacheers_mobile/widget/report_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
     Widget reportTotal() {
       return Container(
         margin: EdgeInsets.only(top: 24),
-        child: ReportCard(),
+        child: ReportTotal(),
       );
     }
 

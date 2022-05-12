@@ -12,7 +12,7 @@ class ReportTile extends StatelessWidget {
           bottom: 10,
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(12.0),
         ),
         color: Color(0xff252836),
         child: Column(

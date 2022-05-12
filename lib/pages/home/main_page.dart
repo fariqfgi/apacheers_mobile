@@ -15,7 +15,9 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     Widget reportButton() {
       return FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/report');
+        },
         backgroundColor: Colors.white,
         child: Image.asset(
           'assets/images/password_icon.png',
