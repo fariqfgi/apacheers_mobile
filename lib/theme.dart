@@ -29,6 +29,10 @@ TextStyle subtitleTextStyle = GoogleFonts.poppins(
   color: subtitleColor,
 );
 
+TextStyle subtitle2TextStyle = GoogleFonts.poppins(
+  color: secondaryColor,
+);
+
 TextStyle orangeTextStyle = GoogleFonts.poppins(
   color: primaryColor,
 );

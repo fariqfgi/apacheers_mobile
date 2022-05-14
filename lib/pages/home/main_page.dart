@@ -19,9 +19,10 @@ class _MainPageState extends State<MainPage> {
           Navigator.pushNamed(context, '/report');
         },
         backgroundColor: Colors.white,
-        child: Image.asset(
-          'assets/images/password_icon.png',
-          width: 20,
+        child: Icon(
+          Icons.bug_report_outlined,
+          color: Colors.red,
+          size: 30,
         ),
       );
     }
@@ -39,9 +40,11 @@ class _MainPageState extends State<MainPage> {
             backgroundColor: backgroundColor3,
             currentIndex: currentIndex,
             onTap: (value) {
-              setState(() {
-                currentIndex = value;
-              });
+              setState(
+                () {
+                  currentIndex = value;
+                },
+              );
             },
             type: BottomNavigationBarType.fixed,
             items: [

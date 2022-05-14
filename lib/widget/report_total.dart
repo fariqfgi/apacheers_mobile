@@ -14,14 +14,14 @@ class ReportTotal extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: 30,
+            width: 50,
           ),
           Image.asset(
-            'assets/images/password_icon.png',
+            'assets/images/report_icon.png',
             height: 70,
           ),
           SizedBox(
-            width: 12,
+            width: 5,
           ),
           Expanded(
             child: Padding(

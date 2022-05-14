@@ -1,4 +1,5 @@
 import 'package:apacheers_mobile/pages/home/main_page.dart';
+import 'package:apacheers_mobile/pages/report_detail.dart';
 import 'package:apacheers_mobile/pages/report_page.dart';
 import 'package:apacheers_mobile/pages/sign_in_page.dart';
 import 'package:apacheers_mobile/pages/sign_up_page.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         '/sign-up': (context) => SignUpPage(),
         '/home': (context) => MainPage(),
         '/report': (context) => ReportPage(),
+        '/report-detail': (context) => ReportDetail(),
       },
     );
   }
