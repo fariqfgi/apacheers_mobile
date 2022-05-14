@@ -1,11 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:apacheers_mobile/models/user_model.dart';
 import 'package:apacheers_mobile/theme.dart';
 import 'package:apacheers_mobile/widget/report_total.dart';
 import 'package:apacheers_mobile/widget/report_tile.dart';
-import 'package:flutter/material.dart';
+import 'package:apacheers_mobile/providers/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
+
     Widget header() {
       return Container(
         margin: EdgeInsets.only(
@@ -20,14 +26,14 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Hello, John',
+                    'Hello, ${user.name}',
                     style: primaryTextStyle.copyWith(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   Text(
-                    '@johndoe',
+                    '@${user.name?.split(' ').first.toLowerCase()}',
                     style: subtitleTextStyle.copyWith(
                       fontSize: 16,
                     ),
