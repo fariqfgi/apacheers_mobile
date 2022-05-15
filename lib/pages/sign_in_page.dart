@@ -15,6 +15,8 @@ class _SignInPageState extends State<SignInPage> {
   TextEditingController passwordController = TextEditingController(text: '');
 
   bool isLoading = false;
+  String? finalName;
+  String? finalToken;
 
   @override
   Widget build(BuildContext context) {

@@ -1,17 +1,22 @@
+import 'package:apacheers_mobile/pages/splash_page.dart';
 import 'package:flutter/material.dart';
-import 'package:apacheers_mobile/models/user_model.dart';
 import 'package:apacheers_mobile/theme.dart';
 import 'package:apacheers_mobile/widget/report_total.dart';
 import 'package:apacheers_mobile/widget/report_tile.dart';
-import 'package:apacheers_mobile/providers/auth_provider.dart';
-import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    AuthProvider authProvider = Provider.of<AuthProvider>(context);
-    UserModel user = authProvider.user;
-
     Widget header() {
       return Container(
         margin: EdgeInsets.only(
@@ -26,14 +31,14 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Hello, ${user.name}',
+                    'Hello, $finalName',
                     style: primaryTextStyle.copyWith(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   Text(
-                    '@${user.name?.split(' ').first.toLowerCase()}',
+                    '@${finalName?.toLowerCase().split(' ').first}',
                     style: subtitleTextStyle.copyWith(
                       fontSize: 16,
                     ),

@@ -1,7 +1,10 @@
 import 'dart:async';
-
 import 'package:apacheers_mobile/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+String? finalName;
+String? finalToken;
 
 class SplashPage extends StatefulWidget {
   @override
@@ -11,12 +14,22 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    Timer(
-      Duration(seconds: 3),
-      () => Navigator.pushNamed(context, '/sign-in'),
-    );
+    _initCheck().whenComplete(() async {
+      Timer(
+        Duration(seconds: 3),
+        () => finalToken == null
+            ? Navigator.pushNamed(context, '/sign-in')
+            : Navigator.pushNamed(context, '/home'),
+      );
+    });
 
     super.initState();
+  }
+
+  Future _initCheck() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    finalToken = prefs.getString('token');
+    finalName = prefs.getString('name');
   }
 
   @override

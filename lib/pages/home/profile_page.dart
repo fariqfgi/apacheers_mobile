@@ -1,15 +1,21 @@
-import 'package:apacheers_mobile/models/user_model.dart';
-import 'package:apacheers_mobile/providers/auth_provider.dart';
+import 'package:apacheers_mobile/pages/splash_page.dart';
 import 'package:apacheers_mobile/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    AuthProvider authProvider = Provider.of<AuthProvider>(context);
-    UserModel user = authProvider.user;
-
     Widget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
@@ -36,14 +42,14 @@ class ProfilePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Hello, ${user.name}',
+                        'Hello, $finalName',
                         style: primaryTextStyle.copyWith(
                           fontSize: 24,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       Text(
-                        '@${user.name}',
+                        '@${finalName?.toLowerCase().split(' ').first}',
                         style: subtitleTextStyle.copyWith(
                           fontSize: 16,
                         ),
@@ -51,10 +57,18 @@ class ProfilePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Image.asset(
-                  'assets/images/exit_icon.png',
-                  width: 20,
-                )
+                GestureDetector(
+                  onTap: () async {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    await prefs.clear();
+                    print('hilang');
+                  },
+                  child: Image.asset(
+                    'assets/images/exit_icon.png',
+                    width: 20,
+                  ),
+                ),
               ],
             ),
           ),
