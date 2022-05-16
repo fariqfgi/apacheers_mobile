@@ -40,7 +40,7 @@ class ReportTotal extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '100000',
+                    '1000',
                     style: secondaryTextStyle.copyWith(
                       fontSize: 16,
                     ),

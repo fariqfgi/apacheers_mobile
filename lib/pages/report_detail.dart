@@ -1,7 +1,16 @@
+import 'package:apacheers_mobile/models/report_model.dart';
 import 'package:apacheers_mobile/theme.dart';
 import 'package:flutter/material.dart';
 
-class ReportDetail extends StatelessWidget {
+class ReportDetail extends StatefulWidget {
+  final ReportModel report;
+  ReportDetail(this.report);
+
+  @override
+  State<ReportDetail> createState() => _ReportDetailState();
+}
+
+class _ReportDetailState extends State<ReportDetail> {
   @override
   Widget build(BuildContext context) {
     Widget header() {
@@ -46,7 +55,7 @@ class ReportDetail extends StatelessWidget {
             ),
           ),
           Text(
-            '103.105.35.80',
+            '${widget.report.ip}',
             style: secondaryTextStyle.copyWith(
               fontSize: 38,
             ),
@@ -92,7 +101,7 @@ class ReportDetail extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'xss, lfi, rfi, id, sqli',
+                          '${widget.report.vulnerability}',
                           style: subtitle2TextStyle.copyWith(
                             fontSize: 13,
                           ),
@@ -127,7 +136,7 @@ class ReportDetail extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '20/02/2022 08:09',
+                    '${widget.report.datetime}',
                     style: tertiaryTextStyle.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -157,7 +166,7 @@ class ReportDetail extends StatelessWidget {
                     height: 12,
                   ),
                   Text(
-                    'Detects hash-contained xss payload attacks, setter usage and property overloading',
+                    '${widget.report.description}',
                     style: subtitleTextStyle.copyWith(
                       fontWeight: FontWeight.w300,
                     ),
@@ -185,7 +194,7 @@ class ReportDetail extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'GET',
+                    '${widget.report.method}',
                     style: subtitleTextStyle.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -215,7 +224,7 @@ class ReportDetail extends StatelessWidget {
                     height: 12,
                   ),
                   Text(
-                    'https://poltektegal.ac.id/sarjana/terapan/teknik/informatika',
+                    '${widget.report.url}',
                     style: subtitleTextStyle.copyWith(
                       fontWeight: FontWeight.w300,
                     ),
@@ -250,7 +259,7 @@ class ReportDetail extends StatelessWidget {
                     height: 15,
                   ),
                   Text(
-                    '</script>alert(document.cookie)</script>',
+                    '${widget.report.payload}',
                     style: tertiaryTextStyle.copyWith(
                       fontWeight: FontWeight.w600,
                     ),

@@ -1,12 +1,21 @@
+import 'package:apacheers_mobile/models/report_model.dart';
+import 'package:apacheers_mobile/pages/report_detail.dart';
 import 'package:apacheers_mobile/theme.dart';
 import 'package:flutter/material.dart';
 
 class ReportCard extends StatelessWidget {
+  final ReportModel report;
+  ReportCard(this.report);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/report-detail');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ReportDetail(report),
+          ),
+        );
       },
       child: Container(
         child: Card(
@@ -20,20 +29,20 @@ class ReportCard extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const ListTile(
+              ListTile(
                 leading: Icon(
                   Icons.warning,
                   size: 40,
                   color: Color(0xffED6363),
                 ),
                 title: Text(
-                  'IP 180.199.92.92',
+                  'IP ${report.ip}',
                   style: TextStyle(
                     color: Colors.white,
                   ),
                 ),
                 subtitle: Text(
-                  'Detect xss, lfi, rfi',
+                  'Detect ${report.vulnerability}',
                   style: TextStyle(
                     color: Color(0xff504F5E),
                   ),
@@ -47,7 +56,7 @@ class ReportCard extends StatelessWidget {
                     bottom: 5,
                   ),
                   child: Text(
-                    '20/03/2022 09:09',
+                    '${report.datetime}',
                     style: TextStyle(
                       color: subtitleColor,
                     ),
