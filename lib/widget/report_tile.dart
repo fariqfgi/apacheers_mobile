@@ -46,7 +46,7 @@ class ReportTile extends StatelessWidget {
                 subtitle: Text(
                   'Detect ${report.vulnerability}',
                   style: TextStyle(
-                    color: Color(0xff504F5E),
+                    color: Color(0xff999999),
                   ),
                 ),
               ),
@@ -60,7 +60,7 @@ class ReportTile extends StatelessWidget {
                   child: Text(
                     '${report.datetime}',
                     style: TextStyle(
-                      color: subtitleColor,
+                      color: tertiaryTextColor,
                     ),
                   ),
                 ),

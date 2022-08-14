@@ -1,7 +1,9 @@
 import 'package:apacheers_mobile/pages/splash_page.dart';
 import 'package:apacheers_mobile/theme.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -12,6 +14,20 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
+  }
+
+  void logout() async {
+    var url = 'http://157.245.55.113/api/logout';
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': '$finalToken'
+    };
+
+    await http.post(
+      Uri.parse(url),
+      headers: headers,
+    );
+    await FirebaseMessaging.instance.unsubscribeFromTopic('ids');
   }
 
   @override
@@ -59,10 +75,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 GestureDetector(
                   onTap: () async {
+                    logout();
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
                     await prefs.clear();
-                    print('hilang');
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/sign-in', (route) => false);
                   },
                   child: Image.asset(
                     'assets/images/exit_icon.png',

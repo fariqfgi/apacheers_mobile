@@ -49,4 +49,22 @@ class AuthProvider with ChangeNotifier {
       return false;
     }
   }
+
+  Future<bool> login2fa({
+    required String iduser,
+    required String code,
+  }) async {
+    try {
+      UserModel user = await AuthService().login2fa(
+        iduser: iduser,
+        code: code,
+      );
+
+      _user = user;
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
 }

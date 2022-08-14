@@ -11,10 +11,12 @@ class ReportHistroyProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getReportHistory() async {
+  Future<void> getReportHistory({
+    required String date,
+  }) async {
     try {
       List<ReportModel> reports =
-          await ReportHistoryService().getReportHistory();
+          await ReportHistoryService().getReportHistory(date: date);
       _reports = reports;
     } catch (e) {
       print(e);

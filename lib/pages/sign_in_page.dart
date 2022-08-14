@@ -1,6 +1,7 @@
 import 'package:apacheers_mobile/providers/auth_provider.dart';
 import 'package:apacheers_mobile/theme.dart';
 import 'package:apacheers_mobile/widget/loading_button.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +18,12 @@ class _SignInPageState extends State<SignInPage> {
   bool isLoading = false;
   String? finalName;
   String? finalToken;
+  String? finalIdUser;
+
+  void subscribe() async {
+    print("subscribe dijalankan");
+    await FirebaseMessaging.instance.subscribeToTopic('ids');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +38,8 @@ class _SignInPageState extends State<SignInPage> {
         email: emailController.text,
         password: passwordController.text,
       )) {
-        Navigator.pushNamed(context, '/home');
+        subscribe();
+        Navigator.pushNamed(context, '/2fa');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

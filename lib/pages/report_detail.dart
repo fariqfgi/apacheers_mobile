@@ -60,6 +60,12 @@ class _ReportDetailState extends State<ReportDetail> {
               fontSize: 38,
             ),
           ),
+          Text(
+            'From ${widget.report.country}',
+            style: secondaryTextStyle.copyWith(
+              fontSize: 18,
+            ),
+          ),
           SizedBox(
             height: 20,
           ),
@@ -145,6 +151,37 @@ class _ReportDetailState extends State<ReportDetail> {
               ),
             ),
 
+// *Severity
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.only(
+                top: defaultMargin,
+                left: defaultMargin,
+                right: defaultMargin,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Severity',
+                    style: primaryTextStyle.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    '${widget.report.severity}',
+                    style: tertiaryTextStyle.copyWith(
+                      fontWeight: FontWeight.w300,
+                    ),
+                    textAlign: TextAlign.justify,
+                  )
+                ],
+              ),
+            ),
+
             // *Description
             Container(
               width: double.infinity,
@@ -167,7 +204,7 @@ class _ReportDetailState extends State<ReportDetail> {
                   ),
                   Text(
                     '${widget.report.description}',
-                    style: subtitleTextStyle.copyWith(
+                    style: tertiaryTextStyle.copyWith(
                       fontWeight: FontWeight.w300,
                     ),
                     textAlign: TextAlign.justify,
@@ -195,7 +232,7 @@ class _ReportDetailState extends State<ReportDetail> {
                   ),
                   Text(
                     '${widget.report.method}',
-                    style: subtitleTextStyle.copyWith(
+                    style: tertiaryTextStyle.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -225,7 +262,7 @@ class _ReportDetailState extends State<ReportDetail> {
                   ),
                   Text(
                     '${widget.report.url}',
-                    style: subtitleTextStyle.copyWith(
+                    style: tertiaryTextStyle.copyWith(
                       fontWeight: FontWeight.w300,
                     ),
                   ),

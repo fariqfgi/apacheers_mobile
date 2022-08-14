@@ -7,6 +7,8 @@ class ReportModel {
   String? method;
   String? url;
   String? payload;
+  String? country;
+  String? severity;
 
   ReportModel({
     this.id,
@@ -17,6 +19,8 @@ class ReportModel {
     this.method,
     this.url,
     this.payload,
+    this.country,
+    this.severity,
   });
 
   ReportModel.fromJson(Map<String, dynamic> json) {
@@ -28,6 +32,8 @@ class ReportModel {
     method = json['method'];
     url = json['url'];
     payload = json['payload'];
+    country = json['country'];
+    severity = json['severity'];
   }
 
   Map<String, dynamic> toJson() {
@@ -40,6 +46,8 @@ class ReportModel {
       'method': method,
       'url': url,
       'payload': payload,
+      'country': country,
+      'severity': severity
     };
   }
 }
